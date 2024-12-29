@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import JournalEntryDetailed, {
     journalEntryDetailsLoader,
 } from "./pages/JournalEntryDetailed";
+import AddNewJournalEntry from "./pages/AddNewJournalEntry";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 path: "/entry/:id",
                 element: <JournalEntryDetailed />,
                 loader: journalEntryDetailsLoader,
+            },
+            {
+                path: "/entry/new",
+                element: <AddNewJournalEntry />,
             },
         ],
     },

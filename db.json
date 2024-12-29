@@ -1,64 +1,99 @@
 {
-    "entries": [
-        {
-            "id": "unique-id-1",
-            "date": "2024-12-28",
-            "title": "Day 1: Starting Fresh",
-            "body": "Today I started working on my journaling app. Excited!",
-            "mood": ["happy", "motivated"],
-            "tags": ["learning", "coding"],
-            "attachments": [],
-            "favorite": false,
-            "createdAt": "2024-12-28T10:00:00Z",
-            "updatedAt": "2024-12-28T12:00:00Z"
-        },
-        {
-            "id": "unique-id-2",
-            "date": "2024-12-27",
-            "title": "Day 2: Exploring Redux",
-            "body": "Learning Redux was challenging but rewarding. Excited for tomorrow!",
-            "mood": ["neutral", "focused"],
-            "tags": ["redux", "progress"],
-            "attachments": ["redux-diagram.png"],
-            "favorite": true,
-            "createdAt": "2024-12-27T09:30:00Z",
-            "updatedAt": "2024-12-27T11:00:00Z"
-        },
-        {
-            "id": "unique-id-3",
-            "date": "2024-12-26",
-            "title": "Day 3: Styling Decisions",
-            "body": "Started thinking about Tailwind CSS and Material UI for the app.",
-            "mood": ["curious"],
-            "tags": ["styling", "design"],
-            "attachments": [],
-            "favorite": false,
-            "createdAt": "2024-12-26T08:00:00Z",
-            "updatedAt": "2024-12-26T08:30:00Z"
-        },
-        {
-            "id": "unique-id-4",
-            "date": "2024-12-25",
-            "title": "Day 4: Holiday Reflections",
-            "body": "Spent the day reflecting on this year's achievements and goals for next year.",
-            "mood": ["reflective", "thankful"],
-            "tags": ["holiday", "reflection"],
-            "attachments": ["holiday-photo.jpg"],
-            "favorite": true,
-            "createdAt": "2024-12-25T18:00:00Z",
-            "updatedAt": "2024-12-25T20:00:00Z"
-        },
-        {
-            "id": "unique-id-5",
-            "date": "2024-12-24",
-            "title": "Day 5: Debugging Issues",
-            "body": "Ran into some bugs while implementing routing. Finally resolved them!",
-            "mood": ["relieved", "determined"],
-            "tags": ["bugs", "coding"],
-            "attachments": ["error-screenshot.png"],
-            "favorite": false,
-            "createdAt": "2024-12-24T15:00:00Z",
-            "updatedAt": "2024-12-24T16:00:00Z"
-        }
-    ]
+  "entries": [
+    {
+      "id": "unique-id-1",
+      "date": "2024-12-28",
+      "title": "Day 1: Starting Fresh",
+      "body": "Today I started working on my journaling app. Excited!",
+      "mood": [
+        "happy",
+        "motivated"
+      ],
+      "tags": [
+        "learning",
+        "coding"
+      ],
+      "attachments": [],
+      "favorite": false,
+      "createdAt": "2024-12-28T10:00:00Z",
+      "updatedAt": "2024-12-28T12:00:00Z"
+    },
+    {
+      "id": "unique-id-2",
+      "date": "2024-12-27",
+      "title": "Day 2: Exploring Redux",
+      "body": "Learning Redux was challenging but rewarding. Excited for tomorrow!",
+      "mood": [
+        "neutral",
+        "focused"
+      ],
+      "tags": [
+        "redux",
+        "progress"
+      ],
+      "attachments": [
+        "redux-diagram.png"
+      ],
+      "favorite": true,
+      "createdAt": "2024-12-27T09:30:00Z",
+      "updatedAt": "2024-12-27T11:00:00Z"
+    },
+    {
+      "id": "unique-id-3",
+      "date": "2024-12-26",
+      "title": "Day 3: Styling Decisions",
+      "body": "Started thinking about Tailwind CSS and Material UI for the app.",
+      "mood": [
+        "curious"
+      ],
+      "tags": [
+        "styling",
+        "design"
+      ],
+      "attachments": [],
+      "favorite": false,
+      "createdAt": "2024-12-26T08:00:00Z",
+      "updatedAt": "2024-12-26T08:30:00Z"
+    },
+    {
+      "id": "unique-id-4",
+      "date": "2024-12-25",
+      "title": "Day 4: Holiday Reflections",
+      "body": "Spent the day reflecting on this year's achievements and goals for next year.",
+      "mood": [
+        "reflective",
+        "thankful"
+      ],
+      "tags": [
+        "holiday",
+        "reflection"
+      ],
+      "attachments": [
+        "holiday-photo.jpg"
+      ],
+      "favorite": true,
+      "createdAt": "2024-12-25T18:00:00Z",
+      "updatedAt": "2024-12-25T20:00:00Z"
+    },
+    {
+      "id": "unique-id-5",
+      "date": "2024-12-24",
+      "title": "Day 5: Debugging Issues",
+      "body": "Ran into some bugs while implementing routing. Finally resolved them!",
+      "mood": [
+        "relieved",
+        "determined"
+      ],
+      "tags": [
+        "bugs",
+        "coding"
+      ],
+      "attachments": [
+        "error-screenshot.png"
+      ],
+      "favorite": false,
+      "createdAt": "2024-12-24T15:00:00Z",
+      "updatedAt": "2024-12-24T16:00:00Z"
+    }
+  ]
 }

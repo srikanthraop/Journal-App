@@ -19,3 +19,31 @@ export async function getEntryById(id) {
 
     return data.json();
 }
+
+export async function postEntry(entry) {
+    const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(entry),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to create entry");
+    }
+
+    return response.json();
+}
+
+export async function deleteEntryById(id) {
+    const response = await fetch(`${API_URL}/${id}`, {
+        method: "DELETE",
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete entry");
+    }
+
+    return response.json();
+}
