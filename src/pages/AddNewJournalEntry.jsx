@@ -2,32 +2,37 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addEntry } from "../features/entrySlice";
 import { useNavigate } from "react-router-dom";
+import MoodSelector from "../components/journal-entry-components/MoodSelector";
+import FavoriteToggle from "../components/journal-entry-components/FavouriteToggle";
+import FormButton from "../components/journal-entry-components/FormButton";
+import TextInput from "../components/journal-entry-components/TextInput";
+import TipTapEditor from "../components/TipTapEditor.jsx";
 
 function AddNewJournalEntry() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
+    const [tipTapBody, setTipTapBody] = useState({ type: "doc", content: [] });
     const [mood, setMood] = useState(["happy"]);
     const [favorite, setFavorite] = useState(false);
 
-    const handleMoodChange = (e) => setMood([e.target.value]);
+    const handleMoodChange = (selectedMoods) => setMood(selectedMoods);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!title || !body) {
-            alert("Please enter body and details");
+        if (!title || tipTapBody.content.length === 0) {
+            alert("Please enter a title and body for your entry.");
             return;
         }
 
-        const newEntry = { title, body, mood, favorite };
+        const newEntry = { title, tipTapBody, mood, favorite };
 
         dispatch(addEntry(newEntry))
             .unwrap()
             .then(() => {
-                navigate("/dashboard"); // Navigate after success
+                navigate("/dashboard");
             })
             .catch((error) => {
                 alert(`Failed to add entry: ${error}`);
@@ -38,56 +43,32 @@ function AddNewJournalEntry() {
         <div>
             <h1>Add New Journal Entry</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="title">Title:</label>
-                    <input
-                        type="text"
-                        id="title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Enter a title for your entry"
-                    />
-                </div>
+                <TextInput
+                    id="title"
+                    label="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Enter a title for your entry"
+                />
                 <br />
-                <div>
-                    <label htmlFor="body">Body:</label>
-                    <textarea
-                        id="body"
-                        value={body}
-                        onChange={(e) => setBody(e.target.value)}
-                        placeholder="Write your journal entry here..."
-                        rows="10"
-                        cols="50"
-                    />
-                </div>
+
+                <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
                 <br />
-                <div>
-                    <label htmlFor="mood">Mood:</label>
-                    <select
-                        id="mood"
-                        value={mood}
-                        onChange={handleMoodChange}
-                        multiple
-                    >
-                        <option value="happy">Happy</option>
-                        <option value="sad">Sad</option>
-                        <option value="excited">Excited</option>
-                        <option value="anxious">Anxious</option>
-                        <option value="neutral">Neutral</option>
-                    </select>
-                </div>
+
+                <MoodSelector
+                    id="mood"
+                    label="Mood"
+                    value={mood}
+                    onChange={handleMoodChange}
+                    options={["happy", "sad", "excited", "anxious", "neutral"]}
+                />
                 <br />
-                <div>
-                    <label htmlFor="favorite">Mark as Favorite:</label>
-                    <button
-                        type="button"
-                        onClick={() => setFavorite(!favorite)}
-                    >
-                        {favorite ? "Unmark Favorite" : "Mark Favorite"}
-                    </button>
-                </div>
+                <FavoriteToggle
+                    isFavorite={favorite}
+                    onToggle={() => setFavorite(!favorite)}
+                />
                 <br />
-                <button type="submit">Save Entry</button>
+                <FormButton type="submit">Save Entry</FormButton>
             </form>
         </div>
     );

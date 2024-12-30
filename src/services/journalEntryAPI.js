@@ -47,3 +47,19 @@ export async function deleteEntryById(id) {
 
     return response.json();
 }
+
+export async function putEntry(id, updatedEntry) {
+    const response = await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedEntry),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update entry");
+    }
+
+    return response.json();
+}

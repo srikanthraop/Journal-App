@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchEntries } from "../features/entrySlice";
 import JournalEntryList from "../components/JournalEntryList";
 
+// HANDLE THE ERROR WHEN NO ENTRIES
+
 const Dashboard = () => {
     const dispatch = useDispatch();
     const { entries, status, error } = useSelector((state) => state.entries);
@@ -33,10 +35,11 @@ const Dashboard = () => {
             </section>
 
             {/* Recent Entries Section */}
+
             <section>
                 {status === "loading" && <p>Loading entries...</p>}
                 {status === "failed" && <p>Error: {error}</p>}
-                {status === "succeeded" && (
+                {status === "succeeded" && entries && (
                     <JournalEntryList entries={entries} />
                 )}
             </section>

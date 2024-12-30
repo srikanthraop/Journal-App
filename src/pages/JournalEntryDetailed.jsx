@@ -3,6 +3,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { getEntryById } from "../services/journalEntryAPI";
 import { useDispatch } from "react-redux";
 import { deleteEntry } from "../features/entrySlice";
+import TiptapEditor from "../components/TipTapEditor";
 
 const JournalEntryDetailed = () => {
     const entry = useLoaderData();
@@ -26,9 +27,12 @@ const JournalEntryDetailed = () => {
                 <p>
                     <strong>Moods:</strong> {entry.mood.join(", ")}
                 </p>
-                <p>
+                {/* <p>
                     <strong>Body:</strong> {entry.body}
-                </p>
+                </p> */}
+                <div>
+                    <TiptapEditor content={entry.tipTapBody} readOnly={true} />
+                </div>
             </div>
             <Link>
                 <button onClick={handleDelete}>Delete</button>
@@ -38,7 +42,7 @@ const JournalEntryDetailed = () => {
 };
 
 export async function journalEntryDetailsLoader({ params }) {
-    return getEntryById(params.id);
+    return await getEntryById(params.id);
 }
 
 export default JournalEntryDetailed;

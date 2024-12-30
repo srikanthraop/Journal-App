@@ -10,6 +10,7 @@ import JournalEntryDetailed, {
     journalEntryDetailsLoader,
 } from "./pages/JournalEntryDetailed";
 import AddNewJournalEntry from "./pages/AddNewJournalEntry";
+import EditJournalEntry from "./pages/EditJournalEntry";
 
 const router = createBrowserRouter([
     {
@@ -31,13 +32,18 @@ const router = createBrowserRouter([
                 element: <Dashboard />,
             },
             {
+                path: "/entry/new",
+                element: <AddNewJournalEntry />,
+            },
+            {
                 path: "/entry/:id",
                 element: <JournalEntryDetailed />,
                 loader: journalEntryDetailsLoader,
             },
             {
-                path: "/entry/new",
-                element: <AddNewJournalEntry />,
+                path: "/entry/:id/edit",
+                element: <EditJournalEntry />,
+                loader: journalEntryDetailsLoader,
             },
         ],
     },

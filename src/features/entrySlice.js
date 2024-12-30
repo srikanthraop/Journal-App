@@ -1,12 +1,9 @@
-import {
-    createSlice,
-    createAsyncThunk,
-    isRejectedWithValue,
-} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
     deleteEntryById,
     getEntries,
     postEntry,
+    putEntry,
 } from "../services/journalEntryAPI";
 
 const initialState = {
@@ -39,6 +36,8 @@ export const addEntry = createAsyncThunk(
                 mood: Array.isArray(entry.mood) ? entry.mood : [entry.mood],
             };
 
+            console.log(newEntry);
+
             const response = await postEntry(newEntry);
 
             // dispatch(fetchEntries());
@@ -56,6 +55,24 @@ export const deleteEntry = createAsyncThunk(
             const response = await deleteEntryById(id);
             dispatch(fetchEntries());
             return response();
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
+export const editEntry = createAsyncThunk(
+    "entries/editEntry",
+    async (entry, { rejectWithValue }) => {
+        try {
+            const updatedEntry = {
+                ...entry,
+                updatedAt: new Date().toISOString(),
+            };
+
+            const response = await putEntry(entry.id, updatedEntry);
+
+            return response;
         } catch (error) {
             return rejectWithValue(error.message);
         }
@@ -114,6 +131,24 @@ const entrySlice = createSlice({
             .addCase(deleteEntry.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload; // Error message from rejectWithValue
+            })
+
+            .addCase(editEntry.pending, (state) => {
+                state.status = "loading";
+            })
+
+            .addCase(editEntry.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                const index = state.entries.findIndex(
+                    (entry) => entry.id === action.payload.id
+                );
+                if (index !== -1) {
+                    state.entries[index] = action.payload; // Replace the old entry with the updated one
+                }
+            })
+            .addCase(editEntry.rejected, (state, action) => {
+                state.status = "failed";
+                state.error = action.payload;
             });
     },
 });
