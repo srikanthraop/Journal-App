@@ -18,20 +18,18 @@ function JournalEntryPreview({ entry }) {
   }
 
   return (
-    <li>
-      <h1 className="">{entry.title}</h1>
-      <p>
-        <strong>Date:</strong> {entry.date}
-      </p>
+    <li className="flex flex-col gap-y-3">
+      <h1 className="font-bold">{entry.title}</h1>
+      <p>{entry.date}</p>
       <p>
         <strong>Moods:</strong> {mood}
       </p>
-      <p>
+      {/* <p>
         <strong>Tags:</strong>
         {entry.tags ? entry.tags.join(", ") : "No tags"}
-      </p>
+      </p> */}
 
-      <div className="">
+      <div className="flex flex-row gap-x-2">
         <Link to={`/entry/${entry.id}`}>
           <Button>View More</Button>
         </Link>
@@ -41,7 +39,7 @@ function JournalEntryPreview({ entry }) {
         </Button>
 
         <Link to={`/entry/${entry.id}/edit`}>
-          <Button>Edit</Button>
+          <Button variant="secondary">Edit</Button>
         </Link>
       </div>
     </li>

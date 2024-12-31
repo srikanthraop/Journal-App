@@ -126,7 +126,7 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
         </div>
       )}
 
-      <div className="h-2/5 w-4/5 overflow-auto rounded-md border border-gray-300 bg-white shadow-lg">
+      <div className="h-2/5 w-4/5 overflow-auto rounded-md border border-gray-300 bg-white shadow-sm">
         <EditorContent editor={editor} />
       </div>
     </div>
