@@ -1,4 +1,6 @@
 import React from "react";
+import "./index.css";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Login from "./pages/Login";

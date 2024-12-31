@@ -5,14 +5,10 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
     return (
         <div className="card">
-            <br></br>
-            <br></br>
-            <TiptapEditor />
+            <h1>Welcome</h1>
             <Link to="/dashboard">
                 <button>Dashboard</button>
             </Link>
-            <br></br>
-            <br></br>
         </div>
     );
 };

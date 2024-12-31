@@ -5,73 +5,75 @@ import { useNavigate } from "react-router-dom";
 import MoodSelector from "../components/journal-entry-components/MoodSelector";
 import FavoriteToggle from "../components/journal-entry-components/FavouriteToggle";
 import FormButton from "../components/journal-entry-components/FormButton";
-import TextInput from "../components/journal-entry-components/TextInput";
 import TipTapEditor from "../components/TipTapEditor.jsx";
+import { Input } from "@/components/ui/input";
 
 function AddNewJournalEntry() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [title, setTitle] = useState("");
-    const [tipTapBody, setTipTapBody] = useState({ type: "doc", content: [] });
-    const [mood, setMood] = useState(["happy"]);
-    const [favorite, setFavorite] = useState(false);
+  const [title, setTitle] = useState("");
+  const [tipTapBody, setTipTapBody] = useState({ type: "doc", content: [] });
+  const [mood, setMood] = useState(["happy"]);
+  const [favorite, setFavorite] = useState(false);
 
-    const handleMoodChange = (selectedMoods) => setMood(selectedMoods);
+  const handleMoodChange = (selectedMoods) => setMood(selectedMoods);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        if (!title || tipTapBody.content.length === 0) {
-            alert("Please enter a title and body for your entry.");
-            return;
-        }
+    if (!title || tipTapBody.content.length === 0) {
+      alert("Please enter a title and body for your entry.");
+      return;
+    }
 
-        const newEntry = { title, tipTapBody, mood, favorite };
+    const newEntry = { title, tipTapBody, mood, favorite };
 
-        dispatch(addEntry(newEntry))
-            .unwrap()
-            .then(() => {
-                navigate("/dashboard");
-            })
-            .catch((error) => {
-                alert(`Failed to add entry: ${error}`);
-            });
-    };
+    dispatch(addEntry(newEntry))
+      .unwrap()
+      .then(() => {
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        alert(`Failed to add entry: ${error}`);
+      });
+  };
 
-    return (
-        <div>
-            <h1>Add New Journal Entry</h1>
-            <form onSubmit={handleSubmit}>
-                <TextInput
-                    id="title"
-                    label="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Enter a title for your entry"
-                />
-                <br />
+  return (
+    <div className="mx-8 my-20">
+      <h1>Add New Journal Entry</h1>
 
-                <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
-                <br />
-
-                <MoodSelector
-                    id="mood"
-                    label="Mood"
-                    value={mood}
-                    onChange={handleMoodChange}
-                    options={["happy", "sad", "excited", "anxious", "neutral"]}
-                />
-                <br />
-                <FavoriteToggle
-                    isFavorite={favorite}
-                    onToggle={() => setFavorite(!favorite)}
-                />
-                <br />
-                <FormButton type="submit">Save Entry</FormButton>
-            </form>
+      <form className="flex flex-col gap-y-8" onSubmit={handleSubmit}>
+        <div className="w-72">
+          <Input
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter a title for your entry"
+          />
         </div>
-    );
+        <div className="flex-grow">
+          <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
+        </div>
+
+        <MoodSelector
+          className="w-60"
+          id="mood"
+          label="Mood"
+          value={mood}
+          onChange={handleMoodChange}
+          options={["happy", "sad", "excited", "anxious", "neutral"]}
+        />
+
+        <FavoriteToggle
+          isFavorite={favorite}
+          onToggle={() => setFavorite(!favorite)}
+        />
+
+        <FormButton type="submit">Save Entry</FormButton>
+      </form>
+    </div>
+  );
 }
 
 export default AddNewJournalEntry;
