@@ -3,6 +3,17 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
+}
+p.is-empty::before {
+  content: attr(data-placeholder);
+  color: #9ca3af; /* Tailwind's gray-400 */
+  position: absolute;
+  pointer-events: none;
+  display: block; /* Ensure it's block-level */
+}
+
+p:not(:first-of-type).is-empty::before {
+  content: none; /* Prevent placeholder in subsequent paragraphs */
 }

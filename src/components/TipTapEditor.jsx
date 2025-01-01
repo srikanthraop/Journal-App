@@ -4,6 +4,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Heading from "@tiptap/extension-heading";
 import CharacterCount from "@tiptap/extension-character-count";
+import Placeholder from "@tiptap/extension-placeholder";
 
 import Toolbar from "./Toolbar";
 
@@ -12,6 +13,15 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
     extensions: [
       StarterKit.configure({
         heading: false,
+      }),
+      Placeholder.configure({
+        placeholder: "Write something …",
+        showOnlyWhenEditable: true,
+        showOnlyCurrent: false,
+        includeChildren: false,
+        shouldShow: ({ editor }) => {
+          return editor.isEmpty;
+        },
       }),
       Heading.configure({
         levels: [1, 2, 3],
@@ -57,15 +67,16 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
   return (
     <div className="flex h-3/5 flex-col items-center justify-center p-4">
       {!readOnly && <Toolbar editor={editor} />}
-      {editor?.storage?.characterCount && (
-        <div className="text-sm text-gray-500">
-          Character Count: {editor.storage.characterCount.characters()}
-          <br />
-          Word Count: {editor.storage.characterCount.words()}
-        </div>
-      )}
 
-      <div className="h-2/5 w-4/5 overflow-auto rounded-md border border-gray-300 bg-white">
+      <div className="relative h-2/5 w-4/5 overflow-auto rounded-md border border-gray-200 bg-white">
+        {editor?.storage?.characterCount && (
+          <div className="relative z-10">
+            <div className="z-2 group absolute right-0 top-0 mr-2 mt-2 w-12 rounded-2xl bg-slate-100 p-1 text-center text-xs drop-shadow-sm hover:drop-shadow-none">
+              {editor.storage.characterCount.characters()} /{" "}
+              {editor.storage.characterCount.words()}
+            </div>
+          </div>
+        )}
         <EditorContent editor={editor} />
       </div>
     </div>
