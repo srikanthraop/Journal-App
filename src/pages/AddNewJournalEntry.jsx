@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addEntry } from "../features/entrySlice";
 import { useNavigate } from "react-router-dom";
-import MoodSelector from "../components/journal-entry-components/MoodSelector";
 import FavoriteToggle from "../components/journal-entry-components/FavouriteToggle";
 import FormButton from "../components/journal-entry-components/FormButton";
 import TipTapEditor from "../components/TipTapEditor.jsx";
 import MinimalTipTapEditor from "../components/MinimalTipTapEditor.jsx";
+import MoodCards from "@/components/mood/MoodCards";
 
 function AddNewJournalEntry() {
   const dispatch = useDispatch();
@@ -16,6 +16,14 @@ function AddNewJournalEntry() {
   const [tipTapBody, setTipTapBody] = useState({ type: "doc", content: [] });
   const [mood, setMood] = useState(["happy"]);
   const [favorite, setFavorite] = useState(false);
+  const [submoodSliders, setSubmoodSliders] = useState({});
+
+  useEffect(
+    function () {
+      console.log(submoodSliders);
+    },
+    [submoodSliders],
+  );
 
   const handleMoodChange = (selectedMoods) => setMood(selectedMoods);
 
@@ -27,7 +35,7 @@ function AddNewJournalEntry() {
       return;
     }
 
-    const newEntry = { title, tipTapBody, mood, favorite };
+    const newEntry = { title, tipTapBody, mood, favorite, submoodSliders };
 
     dispatch(addEntry(newEntry))
       .unwrap()
@@ -41,22 +49,19 @@ function AddNewJournalEntry() {
 
   return (
     <div className="mx-8 my-20">
-      <h1>Add New Journal Entry</h1>
-
-      <MinimalTipTapEditor content={title} onSave={setTitle} />
-
       <form className="flex flex-col gap-y-8" onSubmit={handleSubmit}>
+        <MinimalTipTapEditor
+          className="z-2"
+          content={title}
+          onSave={setTitle}
+        />
         <div className="flex-grow">
           <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
         </div>
 
-        <MoodSelector
-          className="w-60"
-          id="mood"
-          label="Mood"
-          value={mood}
-          onChange={handleMoodChange}
-          options={["happy", "sad", "excited", "anxious", "neutral"]}
+        <MoodCards
+          sliderValues={submoodSliders}
+          onChangeSliderValues={setSubmoodSliders}
         />
 
         <FavoriteToggle

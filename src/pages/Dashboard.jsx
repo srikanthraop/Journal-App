@@ -6,6 +6,7 @@ import JournalEntryList from "../components/JournalEntryList";
 import { Button } from "@/components/ui/button";
 
 // HANDLE THE ERROR WHEN NO ENTRIES
+//HANDLE LOADING
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -19,10 +20,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <header className="dashboard-header">
-        <h1>Welcome Back, Srikanth!</h1>
-        <p>Today's Date: {new Date().toLocaleDateString()}</p>
-      </header>
+      <header className="dashboard-header"></header>
 
       <section className="dashboard-actions">
         <Link to="/entry/new">

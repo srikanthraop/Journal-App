@@ -1,16 +1,17 @@
 import React from "react";
-import TiptapEditor from "../components/TipTapEditor";
 import { Link } from "react-router-dom";
+import MoodDrawer from "@/components/mood/MoodDrawer";
 
 const Welcome = () => {
-    return (
-        <div className="card">
-            <h1>Welcome</h1>
-            <Link to="/dashboard">
-                <button>Dashboard</button>
-            </Link>
-        </div>
-    );
+  const slides = [0, 1, 2, 3, 4];
+  return (
+    <div>
+      <h1>Welcome</h1>
+      <Link to="/dashboard">
+        <button>Dashboard</button>
+      </Link>
+    </div>
+  );
 };
 
 export default Welcome;
