@@ -19,6 +19,9 @@ const OneLiner = Node.create({
   renderHTML({ HTMLAttributes }) {
     return ["p", HTMLAttributes, 0];
   },
+  editorProps: {
+    attributes: {},
+  },
 });
 
 function MinimalTipTapEditor({
@@ -41,7 +44,7 @@ function MinimalTipTapEditor({
     editable: !readOnly,
     editorProps: {
       attributes: {
-        class: "focus:outline-none text-5xl italic font-extrabold",
+        class: "focus:outline-none text-5xl font-normal",
       },
     },
     addKeyboardShortcuts: () => ({
@@ -86,6 +89,8 @@ function MinimalTipTapEditor({
         color: "#000",
         minHeight: "1.5em",
         fontSize: "1rem",
+        marginLeft: "10%",
+        marginTop: "-2%",
       }}
     />
   );

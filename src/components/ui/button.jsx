@@ -20,6 +20,22 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
         link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
+
+        //custom
+        Happy:
+          "bg-yellow-100 text-yellow-700 shadow-sm hover:shadow-md hover:bg-yellow-200 dark:border-yellow-500 dark:bg-yellow-800 dark:text-yellow-300 dark:hover:bg-yellow-700 h-12 rounded-lg px-6 py-3",
+        Sad: "bg-blue-100 text-blue-700 shadow-sm hover:shadow-md hover:bg-blue-200 dark:border-blue-500 dark:bg-blue-800 dark:text-blue-300 dark:hover:bg-blue-700 h-12 rounded-lg px-6 py-3",
+        Angry:
+          "bg-red-100 text-red-700 shadow-sm hover:shadow-md hover:bg-red-200 dark:border-red-500 dark:bg-red-800 dark:text-red-300 dark:hover:bg-red-700 h-12 rounded-lg px-6 py-3",
+        Afraid:
+          "bg-purple-100 text-purple-700 shadow-sm hover:shadow-md hover:bg-purple-200 dark:border-purple-500 dark:bg-purple-800 dark:text-purple-300 dark:hover:bg-purple-700 h-12 rounded-lg px-6 py-3",
+        Surprised:
+          "bg-pink-100 text-pink-700 shadow-sm hover:shadow-md hover:bg-pink-200 dark:border-pink-500 dark:bg-pink-800 dark:text-pink-300 dark:hover:bg-pink-700 h-12 rounded-lg px-6 py-3",
+        Disgusted:
+          "bg-amber-100 text-amber-700 shadow-sm hover:shadow-md hover:bg-amber-200 dark:border-amber-500 dark:bg-amber-800 dark:text-amber-300 dark:hover:bg-amber-700 h-12 rounded-lg px-6 py-3",
+        Calm: "bg-gray-100 text-gray-700 shadow-sm hover:shadow-md hover:bg-gray-200 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 h-12 rounded-lg px-6 py-3",
+        Excited:
+          "bg-orange-100 text-orange-700 shadow-sm hover:shadow-md hover:bg-orange-200 dark:border-orange-500 dark:bg-orange-800 dark:text-orange-300 dark:hover:bg-orange-700 h-12 rounded-lg px-6 py-3",
       },
       size: {
         default: "h-9 px-4 py-2",

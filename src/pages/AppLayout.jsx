@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 const AppLayout = () => {
   return (
-    <div className="h-dvh bg-stone-100">
+    <div className="h-dvh">
       <Header />
       <main className="p-10">
         <Outlet />

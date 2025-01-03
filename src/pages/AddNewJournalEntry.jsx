@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addEntry } from "../features/entrySlice";
 import { useNavigate } from "react-router-dom";
-import FavoriteToggle from "../components/journal-entry-components/FavouriteToggle";
-import FormButton from "../components/journal-entry-components/FormButton";
 import TipTapEditor from "../components/TipTapEditor.jsx";
 import MinimalTipTapEditor from "../components/MinimalTipTapEditor.jsx";
 import MoodCards from "@/components/mood/MoodCards";
+import { Button } from "@/components/ui/button";
 
 function AddNewJournalEntry() {
   const dispatch = useDispatch();
@@ -24,8 +23,6 @@ function AddNewJournalEntry() {
     },
     [submoodSliders],
   );
-
-  const handleMoodChange = (selectedMoods) => setMood(selectedMoods);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,12 +46,11 @@ function AddNewJournalEntry() {
 
   return (
     <div className="mx-8 my-20">
-      <form className="flex flex-col gap-y-8" onSubmit={handleSubmit}>
-        <MinimalTipTapEditor
-          className="z-2"
-          content={title}
-          onSave={setTitle}
-        />
+      <form
+        className="flex flex-col justify-center gap-y-8"
+        onSubmit={handleSubmit}
+      >
+        <MinimalTipTapEditor content={title} onSave={setTitle} />
         <div className="flex-grow">
           <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
         </div>
@@ -64,12 +60,13 @@ function AddNewJournalEntry() {
           onChangeSliderValues={setSubmoodSliders}
         />
 
-        <FavoriteToggle
-          isFavorite={favorite}
-          onToggle={() => setFavorite(!favorite)}
-        />
-
-        <FormButton type="submit">Save Entry</FormButton>
+        <Button
+          type="submit"
+          varaint="default"
+          className="mx-auto flex w-24 flex-row"
+        >
+          Save Entry
+        </Button>
       </form>
     </div>
   );

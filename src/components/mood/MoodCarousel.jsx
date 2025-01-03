@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -9,7 +8,12 @@ import {
 } from "@/components/ui/carousel";
 import { Slider } from "@/components/ui/slider";
 
-const MoodCarousel = ({ submoods, sliderValues, setSliderValues }) => {
+const MoodCarousel = ({
+  submoods,
+  sliderValues,
+  setSliderValues,
+  moodStyle,
+}) => {
   const handleSliderChange = (mood, value) => {
     setSliderValues((prevValues) => ({
       ...prevValues,
@@ -18,7 +22,7 @@ const MoodCarousel = ({ submoods, sliderValues, setSliderValues }) => {
   };
 
   return (
-    <div className="m-auto">
+    <div className={`m-auto ${moodStyle} rounded-lg p-4`}>
       <Carousel
         opts={{
           align: "start",
@@ -28,13 +32,17 @@ const MoodCarousel = ({ submoods, sliderValues, setSliderValues }) => {
       >
         <CarouselContent className="ml-20">
           {submoods.map((mood, index) => (
-            <CarouselItem key={index} className="basis-[60%] pl-1">
+            <CarouselItem
+              key={index}
+              className={`basis-[70%] pl-1 ${moodStyle} rounded-md`}
+            >
               <div className="p-1">
-                <Card>
+                <Card className={`shadow-md ${moodStyle}`}>
                   <CardContent className="flex aspect-square flex-col items-center justify-center overflow-hidden p-6">
                     <span className="text-2xl font-semibold">{mood}</span>
                     <Slider
-                      className="mt-[55%] w-40"
+                      className="mt-[45%] w-48"
+                      mood={mood}
                       defaultValue={[0]}
                       max={5}
                       step={1}
