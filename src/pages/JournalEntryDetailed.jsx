@@ -7,23 +7,18 @@ import {
 } from "react-router-dom";
 import { getEntryById } from "../services/journalEntryAPI";
 import { useDispatch } from "react-redux";
-import { deleteEntry } from "../features/entrySlice";
+import { addEntries, deleteEntry } from "../features/entrySlice";
 import TiptapEditor from "../components/TipTapEditor";
 import DeleteButton from "@/components/DeleteButton";
+import store from "@/store";
 
 const JournalEntryDetailed = () => {
   const entry = useLoaderData();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const navigation = useNavigation();
-  useEffect(() => {
-    console.log(navigation.state);
-  }, [navigation]);
-  console.log(navigation);
-
-  function handleDelete() {
-    dispatch(deleteEntry(entry.id));
+  async function handleDelete() {
+    await dispatch(deleteEntry(entry.id));
     navigate("/dashboard");
   }
 
@@ -57,7 +52,22 @@ const JournalEntryDetailed = () => {
 };
 
 export async function journalEntryDetailsLoader({ params }) {
-  return await getEntryById(params.id);
+  const state = store.getState();
+  const entryId = params.id;
+
+  const entry = state.entries.entries.find((entry) => entry.id === entryId);
+
+  if (entry) {
+    return entry;
+  }
+
+  try {
+    const fetchedEntry = await getEntryById(entryId);
+    store.dispatch(addEntries([fetchedEntry]));
+    return fetchedEntry;
+  } catch (error) {
+    throw new Response("Entry not found", { status: 404 });
+  }
 }
 
 export default JournalEntryDetailed;

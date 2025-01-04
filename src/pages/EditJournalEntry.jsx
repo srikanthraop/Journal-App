@@ -5,70 +5,92 @@ import { useDispatch } from "react-redux";
 import TextInput from "../components/journal-entry-components/TextInput";
 import TipTapEditor from "../components/TipTapEditor";
 import FormButton from "../components/journal-entry-components/FormButton";
-import { editEntry } from "../features/entrySlice";
+import { addEntries, editEntry } from "../features/entrySlice";
 
 function EditJournalEntry() {
-    const entry = useLoaderData();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const entry = useLoaderData();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [title, setTitle] = useState(entry.title);
-    const [tipTapBody, setTipTapBody] = useState(entry.tipTapBody);
+  const [title, setTitle] = useState(entry.title);
+  const [tipTapBody, setTipTapBody] = useState(entry.tipTapBody);
 
-    function handleSubmit(e) {
-        e.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
 
-        // Validate the input fields
-        if (
-            !title.trim() ||
-            !tipTapBody.content ||
-            tipTapBody.content.length === 0
-        ) {
-            alert("Title and body cannot be empty.");
-            return;
-        }
-
-        // Construct the updated entry object
-        const updatedEntry = {
-            ...entry,
-            title,
-            tipTapBody,
-        };
-
-        // Dispatch the editEntry thunk
-        dispatch(editEntry(updatedEntry))
-            .unwrap()
-            .then(() => {
-                navigate("/dashboard"); // Redirect to the dashboard on success
-            })
-            .catch((error) => {
-                alert(`Failed to save entry: ${error}`); // Handle errors
-            });
+    if (
+      !title.trim() ||
+      !tipTapBody.content ||
+      tipTapBody.content.length === 0
+    ) {
+      alert("Title and body cannot be empty.");
+      return;
     }
 
-    return (
-        <div>
-            <h1>Edit Journal Entry</h1>
-            <form onSubmit={handleSubmit}>
-                <TextInput
-                    id="title"
-                    label="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <br />
+    const updatedEntry = {
+      ...entry,
+      title,
+      tipTapBody,
+    };
 
-                <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
+    dispatch(editEntry(updatedEntry))
+      .unwrap()
+      .then(() => {
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        alert(`Failed to save entry: ${error}`);
+      });
+  }
 
-                <br />
-                <FormButton type="submit">Save Entry</FormButton>
-            </form>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Edit Journal Entry</h1>
+      <form onSubmit={handleSubmit}>
+        <TextInput
+          id="title"
+          label="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <br />
+
+        <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
+
+        <br />
+        <FormButton type="submit">Save Entry</FormButton>
+      </form>
+    </div>
+  );
 }
 
+// export async function journalEntryDetailsLoader({ params }) {
+//   try {
+//     return await getEntryById(params.id);
+//   } catch (error) {
+//     throw new Response("Entry not found", { status: 404 });
+//   }
+// }
+
 export async function journalEntryDetailsLoader({ params }) {
-    return await getEntryById(params.id);
+  const state = store.getState();
+  const entryId = params.id;
+
+  // Check if the entry exists in Redux state
+  const entry = state.entries.entries.find((entry) => entry.id === entryId);
+
+  if (entry) {
+    return entry; // Return from Redux state
+  }
+
+  // Fallback to server fetch
+  try {
+    const fetchedEntry = await getEntryById(entryId);
+    store.dispatch(addEntries([fetchedEntry])); // Optionally store in Redux
+    return fetchedEntry;
+  } catch (error) {
+    throw new Response("Entry not found", { status: 404 });
+  }
 }
 
 export default EditJournalEntry;

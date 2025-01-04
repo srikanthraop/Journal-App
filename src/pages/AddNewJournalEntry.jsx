@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addEntry } from "../features/entrySlice";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import TipTapEditor from "../components/TipTapEditor.jsx";
 import MinimalTipTapEditor from "../components/MinimalTipTapEditor.jsx";
 import MoodCards from "@/components/mood/MoodCards";
@@ -31,10 +31,9 @@ function AddNewJournalEntry() {
 
   // useEffect(
   //   function () {
-  //     console.log(submoodSliders);
   //     console.log(attachedMedia);
   //   },
-  //   [submoodSliders, attachedMedia],
+  //   [attachedMedia],
   // );
 
   const handleSubmit = (e) => {
@@ -45,7 +44,14 @@ function AddNewJournalEntry() {
       return;
     }
 
-    const newEntry = { title, tipTapBody, mood, favorite, submoodSliders };
+    const newEntry = {
+      title,
+      tipTapBody,
+      mood,
+      favorite,
+      submoodSliders,
+      attachedMedia,
+    };
 
     dispatch(addEntry(newEntry))
       .unwrap()
@@ -59,7 +65,7 @@ function AddNewJournalEntry() {
 
   return (
     <div className="mx-8 my-0">
-      <form
+      <Form
         className="flex flex-col justify-center gap-y-8"
         onSubmit={handleSubmit}
       >
@@ -88,7 +94,7 @@ function AddNewJournalEntry() {
         <Button type="submit" variant="default">
           Save Entry
         </Button>
-      </form>
+      </Form>
     </div>
   );
 }
