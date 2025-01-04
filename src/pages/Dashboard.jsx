@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEntries } from "../features/entrySlice";
 import JournalEntryList from "../components/JournalEntryList";
@@ -11,6 +11,17 @@ import { Button } from "@/components/ui/button";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { entries, status, error } = useSelector((state) => state.entries);
+
+  const navigation = useNavigation();
+
+  useEffect(
+    function () {
+      if (navigation.state !== "idle") {
+        console.log("DASHBOARD" + navigation.state);
+      }
+    },
+    [navigation],
+  );
 
   useEffect(() => {
     if (status === "idle") {

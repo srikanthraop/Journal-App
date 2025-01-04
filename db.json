@@ -1,60 +1,6 @@
 {
   "entries": [
     {
-      "id": "8122219b-e81f-4f21-ad3b-f5844dc2cd4a",
-      "date": "2025-01-01T16:13:08.412Z",
-      "createdAt": "2025-01-01T16:13:08.412Z",
-      "updatedAt": "2025-01-01T16:13:08.412Z",
-      "tags": [],
-      "attachments": [],
-      "title": "Nigesh",
-      "tipTapBody": {
-        "type": "doc",
-        "content": [
-          {
-            "type": "paragraph",
-            "content": [
-              {
-                "type": "text",
-                "text": "Hello"
-              }
-            ]
-          }
-        ]
-      },
-      "mood": [
-        "happy"
-      ],
-      "favorite": false
-    },
-    {
-      "id": "32eaeffc-d4a6-44ad-b7d4-204b48cbafeb",
-      "date": "2025-01-02T05:58:40.689Z",
-      "createdAt": "2025-01-02T05:58:40.689Z",
-      "updatedAt": "2025-01-02T05:58:40.689Z",
-      "tags": [],
-      "attachments": [],
-      "title": "Hello",
-      "tipTapBody": {
-        "type": "doc",
-        "content": [
-          {
-            "type": "paragraph",
-            "content": [
-              {
-                "type": "text",
-                "text": "Test"
-              }
-            ]
-          }
-        ]
-      },
-      "mood": [
-        "happy"
-      ],
-      "favorite": false
-    },
-    {
       "id": "333ece60-bda7-479d-a495-c0e696e56228",
       "date": "2025-01-03T05:42:24.457Z",
       "createdAt": "2025-01-03T05:42:24.457Z",

@@ -90,7 +90,6 @@ function MinimalTipTapEditor({
         minHeight: "1.5em",
         fontSize: "1rem",
         marginLeft: "10%",
-        marginTop: "-2%",
       }}
     />
   );

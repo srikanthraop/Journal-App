@@ -6,6 +6,8 @@ import TipTapEditor from "../components/TipTapEditor.jsx";
 import MinimalTipTapEditor from "../components/MinimalTipTapEditor.jsx";
 import MoodCards from "@/components/mood/MoodCards";
 import { Button } from "@/components/ui/button";
+import CustomMenu from "@/components/CustomMenu";
+import CustomMenuDialog from "@/components/CustomMenuDialog";
 
 function AddNewJournalEntry() {
   const dispatch = useDispatch();
@@ -16,13 +18,24 @@ function AddNewJournalEntry() {
   const [mood, setMood] = useState(["happy"]);
   const [favorite, setFavorite] = useState(false);
   const [submoodSliders, setSubmoodSliders] = useState({});
+  const [attachedMedia, setAttachedMedia] = useState({
+    game: null,
+    movie: null,
+    song: null,
+  });
 
-  useEffect(
-    function () {
-      console.log(submoodSliders);
-    },
-    [submoodSliders],
-  );
+  const [selectedItem, setSelectedItem] = useState("");
+  function handleClose() {
+    setSelectedItem("");
+  }
+
+  // useEffect(
+  //   function () {
+  //     console.log(submoodSliders);
+  //     console.log(attachedMedia);
+  //   },
+  //   [submoodSliders, attachedMedia],
+  // );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +58,7 @@ function AddNewJournalEntry() {
   };
 
   return (
-    <div className="mx-8 my-20">
+    <div className="mx-8 my-0">
       <form
         className="flex flex-col justify-center gap-y-8"
         onSubmit={handleSubmit}
@@ -56,15 +69,23 @@ function AddNewJournalEntry() {
         </div>
 
         <MoodCards
+          className="mt-10 flex w-full flex-row justify-center gap-x-3"
           sliderValues={submoodSliders}
           onChangeSliderValues={setSubmoodSliders}
         />
 
-        <Button
-          type="submit"
-          varaint="default"
-          className="mx-auto flex w-24 flex-row"
-        >
+        <CustomMenu onSelect={setSelectedItem} />
+
+        {selectedItem && (
+          <CustomMenuDialog
+            selectedItem={selectedItem}
+            onClose={handleClose}
+            attachedMedia={attachedMedia}
+            onAttach={setAttachedMedia}
+          />
+        )}
+
+        <Button type="submit" variant="default">
           Save Entry
         </Button>
       </form>
