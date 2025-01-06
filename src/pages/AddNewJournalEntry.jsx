@@ -22,6 +22,7 @@ function AddNewJournalEntry() {
     game: null,
     movie: null,
     song: null,
+    excerpt: null,
   });
 
   const [selectedItem, setSelectedItem] = useState("");
@@ -29,12 +30,12 @@ function AddNewJournalEntry() {
     setSelectedItem("");
   }
 
-  // useEffect(
-  //   function () {
-  //     console.log(attachedMedia);
-  //   },
-  //   [attachedMedia],
-  // );
+  useEffect(
+    function () {
+      console.log(attachedMedia);
+    },
+    [attachedMedia],
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,6 +53,10 @@ function AddNewJournalEntry() {
       submoodSliders,
       attachedMedia,
     };
+
+    if (newEntry.excerpt === null) {
+      newEntry.excerpt = "I forgot to add an excerpt";
+    }
 
     dispatch(addEntry(newEntry))
       .unwrap()

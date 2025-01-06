@@ -44,7 +44,8 @@ function MinimalTipTapEditor({
     editable: !readOnly,
     editorProps: {
       attributes: {
-        class: "focus:outline-none text-5xl font-normal",
+        class:
+          "focus:outline-none text-5xl font-normal font-spectral font-semibold ",
       },
     },
     addKeyboardShortcuts: () => ({

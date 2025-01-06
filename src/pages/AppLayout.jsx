@@ -18,7 +18,7 @@ const AppLayout = () => {
         <LoadingScreen />
       ) : (
         <>
-          <main className="p-10">
+          <main className="bg-stone-100">
             <Outlet />
           </main>
         </>

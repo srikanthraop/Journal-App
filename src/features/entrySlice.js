@@ -11,6 +11,7 @@ const initialState = {
   status: "idle",
   addStatus: "idle",
   error: null,
+  movies: {},
 };
 
 export const fetchEntries = createAsyncThunk(
@@ -32,8 +33,8 @@ export const addEntry = createAsyncThunk(
         updatedAt: new Date().toISOString(),
         tags: [],
         attachments: [],
-        ...entry,
         mood: Array.isArray(entry.mood) ? entry.mood : [entry.mood],
+        ...entry,
       };
 
       console.log(newEntry);
@@ -91,6 +92,7 @@ const entrySlice = createSlice({
     addEntries(state, action) {
       state.entries = action.payload;
     },
+    addMovies(state, action) {},
   },
   extraReducers: (builder) => {
     builder

@@ -34,7 +34,7 @@ const MoodCarousel = ({
           {submoods.map((mood, index) => (
             <CarouselItem
               key={index}
-              className={`basis-[70%] pl-1 ${moodStyle} rounded-md`}
+              className={`basis-[70%] pl-1 ${moodStyle} rounded-md font-bold`}
             >
               <div className="p-1">
                 <Card className={`shadow-md ${moodStyle}`}>

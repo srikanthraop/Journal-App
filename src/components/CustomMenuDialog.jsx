@@ -40,6 +40,7 @@ const CustomMenuDialog = ({
             {selectedItem === "Song" && "Add a link to a song that moved you."}
             {selectedItem === "Movie" &&
               "Add a link to a movie that resonated with you."}
+            {selectedItem === "Excerpt" && "Add an excerpt to display it"}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

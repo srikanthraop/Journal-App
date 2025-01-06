@@ -64,29 +64,19 @@ function EditJournalEntry() {
   );
 }
 
-// export async function journalEntryDetailsLoader({ params }) {
-//   try {
-//     return await getEntryById(params.id);
-//   } catch (error) {
-//     throw new Response("Entry not found", { status: 404 });
-//   }
-// }
-
 export async function journalEntryDetailsLoader({ params }) {
   const state = store.getState();
   const entryId = params.id;
 
-  // Check if the entry exists in Redux state
   const entry = state.entries.entries.find((entry) => entry.id === entryId);
 
   if (entry) {
-    return entry; // Return from Redux state
+    return entry;
   }
 
-  // Fallback to server fetch
   try {
     const fetchedEntry = await getEntryById(entryId);
-    store.dispatch(addEntries([fetchedEntry])); // Optionally store in Redux
+    store.dispatch(addEntries([fetchedEntry]));
     return fetchedEntry;
   } catch (error) {
     throw new Response("Entry not found", { status: 404 });

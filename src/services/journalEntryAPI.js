@@ -1,4 +1,5 @@
 const API_URL = "http://localhost:8000/entries";
+const OMDB_API_KEY = "7fb3835a";
 
 export async function getEntries() {
   const data = await fetch(API_URL);
@@ -7,7 +8,7 @@ export async function getEntries() {
     throw new Error("Failed to fetch entries");
   }
 
-  return data.json();
+  return await data.json();
 }
 
 export async function getEntryById(id) {
@@ -62,4 +63,21 @@ export async function putEntry(id, updatedEntry) {
   }
 
   return await response.json();
+}
+
+//OMDB API
+
+export async function getOMDBMovie(id) {
+  try {
+    const response = await fetch(
+      `https://www.omdbapi.com/?i=${id}&apikey=${OMDB_API_KEY}`,
+    );
+    if (!response) {
+      throw new Error("Failed to fetch movie from OMDB");
+    }
+
+    return await response.json();
+  } catch (error) {
+    throw new Error("Failed to fetch movie from OMDB " + error);
+  }
 }

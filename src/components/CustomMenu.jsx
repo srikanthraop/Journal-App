@@ -45,6 +45,15 @@ const CustomMenu = ({ onSelect }) => {
           >
             Movie
           </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className="rounded-md px-2 py-1 text-gray-700 hover:bg-gray-100"
+            onClick={() => {
+              onSelect("Excerpt");
+            }}
+          >
+            Excerpt
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

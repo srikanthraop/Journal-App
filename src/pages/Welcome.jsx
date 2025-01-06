@@ -1,12 +1,14 @@
+import HappyText from "@/text-framer-motion/HappyText";
 import React from "react";
 import { Link } from "react-router-dom";
-import MoodDrawer from "@/components/mood/MoodDrawer";
 
 const Welcome = () => {
-  const slides = [0, 1, 2, 3, 4];
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <h1>Welcome</h1>
+      <div>
+        <HappyText text={"Srikanth"} />
+      </div>
       <Link to="/dashboard">
         <button>Dashboard</button>
       </Link>
