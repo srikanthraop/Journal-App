@@ -32,7 +32,7 @@ const buttonVariants = cva(
         Surprised:
           "bg-pink-100 text-pink-700 shadow-sm hover:shadow-md hover:bg-pink-200 dark:border-pink-500 dark:bg-pink-800 dark:text-pink-300 dark:hover:bg-pink-700 h-12 rounded-lg px-6 py-3",
         Disgusted:
-          "bg-amber-100 text-amber-700 shadow-sm hover:shadow-md hover:bg-amber-200 dark:border-amber-500 dark:bg-amber-800 dark:text-amber-300 dark:hover:bg-amber-700 h-12 rounded-lg px-6 py-3",
+          "bg-green-100  text-green-700 shadow-sm hover:shadow-md hover:bg-green-200 dark:border-green-500 dark:bg-green-800 dark:text-green-300 dark:hover:bg-green-700 h-12 rounded-lg px-6 py-3",
         Calm: "bg-gray-100 text-gray-700 shadow-sm hover:shadow-md hover:bg-gray-200 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 h-12 rounded-lg px-6 py-3",
         Excited:
           "bg-orange-100 text-orange-700 shadow-sm hover:shadow-md hover:bg-orange-200 dark:border-orange-500 dark:bg-orange-800 dark:text-orange-300 dark:hover:bg-orange-700 h-12 rounded-lg px-6 py-3",

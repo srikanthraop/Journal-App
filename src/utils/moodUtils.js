@@ -63,18 +63,18 @@ export const moodColors = {
     backgroundColor: "#ffe0f0",
   },
   Disgusted: {
-    boxShadow: "rgba(255, 191, 0, 0.5)",
-    linearGradient1: "#FFC107",
-    linearGradient2: "#FF8C00",
-    textShadow: "rgba(255, 191, 0, 0.6)",
-    backgroundColor: "#fff4d6",
+    boxShadow: "rgba(154, 205, 50, 0.5)", // Sickly green glow
+    linearGradient1: "#6B8E23", // Olive green
+    linearGradient2: "#556B2F", // Darker olive green
+    textShadow: "rgba(154, 205, 50, 0.6)", // Strong green shadow
+    backgroundColor: "#eef7e1", // Pale greenish background
   },
   Calm: {
-    boxShadow: "rgba(211, 211, 211, 0.5)",
-    linearGradient1: "#D3D3D3",
-    linearGradient2: "#A9A9A9",
-    textShadow: "rgba(211, 211, 211, 0.6)",
-    backgroundColor: "#f5f5f5",
+    boxShadow: "rgba(169, 169, 169, 0.5)", // Light gray glow
+    linearGradient1: "#D3D3D3", // Light gray
+    linearGradient2: "#A9A9A9", // Dark gray
+    textShadow: "rgba(169, 169, 169, 0.6)", // Subtle gray shadow
+    backgroundColor: "#f2f2f2", // Slightly darker gray for visibility
   },
   Excited: {
     boxShadow: "rgba(255, 165, 0, 0.5)",

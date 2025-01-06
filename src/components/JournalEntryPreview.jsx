@@ -43,12 +43,11 @@ function JournalEntryPreview({ entry }) {
     <motion.li
       className="flex flex-col rounded-3xl bg-neutral-50 p-5 font-thin" // Neutral background
       whileHover={{
-        scale: 1.03, // Subtle scale-up
+        scale: [null, 1.05, 1.03], // Subtle scale-up
         boxShadow: `0px 10px 20px ${dominantMoodColor.boxShadow}`,
-
         backgroundColor: `${dominantMoodColor.backgroundColor}`, // Slightly deeper yellow on hover
       }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.4 }}
       onHoverStart={() => setIsHovered(true)} // Trigger hover state
       onHoverEnd={() => setIsHovered(false)} // Reset hover state
     >

@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet, useNavigation } from "react-router-dom";
 
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 import LoadingScreen from "@/components/LoadingScreen";
 
@@ -18,7 +17,7 @@ const AppLayout = () => {
         <LoadingScreen />
       ) : (
         <>
-          <main className="bg-stone-100">
+          <main>
             <Outlet />
           </main>
         </>

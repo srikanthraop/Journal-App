@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
-import {
-  Link,
-  useLoaderData,
-  useNavigate,
-  useNavigation,
-} from "react-router-dom";
+import React from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { getEntryById } from "../services/journalEntryAPI";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 import { addEntries, deleteEntry } from "../features/entrySlice";
 import TiptapEditor from "../components/TipTapEditor";
 import DeleteButton from "@/components/DeleteButton";
@@ -23,31 +19,36 @@ const JournalEntryDetailed = () => {
   }
 
   return (
-    <>
-      <div>
-        <h1>{entry.title}</h1>
-        <p>
-          <strong>Date:</strong> {entry.date}
-        </p>
-        <p>
-          <strong>Moods:</strong> {entry.mood.join(", ")}
-        </p>
-        {/* <p>
-                    <strong>Body:</strong> {entry.body}
-                </p> */}
+    <div className="mx-auto my-10 max-w-screen-2xl px-8 sm:px-16 md:px-24 lg:px-32 xl:px-48">
+      <div className="relative grid grid-cols-1">
         <div>
-          <TiptapEditor content={entry.tipTapBody} readOnly={true} />
+          <motion.h1
+            className="ml-[135px] font-spectral text-6xl"
+            initial={{ transform: "translateX(-100px)" }}
+            animate={{ transform: "translateX(0px)" }}
+            transition={{ type: "spring" }}
+          >
+            {entry.title}
+          </motion.h1>
+          {/* <p>
+          <strong>Date:</strong> {entry.date}
+        </p> */}
+
+          <div>
+            <TiptapEditor content={entry.tipTapBody} readOnly={true} />
+          </div>
+        </div>
+
+        <div className="sticky w-24">
+          <DeleteButton
+            title="Delete"
+            descriptionTitle="Confirm Deletion"
+            descriptionBody="Are you sure you want to delete this entry? This action cannot be undone."
+            onDelete={handleDelete}
+          />
         </div>
       </div>
-
-      {/* <Button onClick={handleDelete}>Delete</Button> */}
-      <DeleteButton
-        title="Delete"
-        descriptionTitle="Confirm Deletion"
-        descriptionBody="Are you sure you want to delete this entry? This action cannot be undone."
-        onDelete={handleDelete}
-      />
-    </>
+    </div>
   );
 };
 
