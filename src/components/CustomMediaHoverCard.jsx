@@ -9,7 +9,7 @@ const CustomMediaHoverCard = ({ attachedMedia }) => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <button className="font-poppins font-semibold underline">
+        <button className="font-poppins font-semibold underline underline-offset-4">
           What was I into then?
         </button>
       </HoverCardTrigger>

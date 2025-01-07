@@ -11,13 +11,8 @@ import { GoPencil } from "react-icons/go";
 
 function JournalEntryPreview({ entry }) {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
   const [splitDate, splitTime] = entry.date.split("T");
   const formattedTime = splitTime.replace("Z", "");
-
-  const mood = Array.isArray(entry.mood)
-    ? entry.mood.join(", ")
-    : entry.mood || "No mood specified";
 
   function handleDelete() {
     dispatch(deleteEntry(entry.id));

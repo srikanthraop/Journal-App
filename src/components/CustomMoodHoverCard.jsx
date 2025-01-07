@@ -14,7 +14,7 @@ const CustomMoodHoverCard = ({ submoods }) => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <button className="font-poppins font-semibold underline">
+        <button className="font-poppins font-semibold underline underline-offset-4">
           What were you feeling then?
         </button>
       </HoverCardTrigger>
