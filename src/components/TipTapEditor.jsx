@@ -60,13 +60,7 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
   }
 
   return (
-    <div
-    // className={
-    //   readOnly
-    //     ? "flex h-3/5 flex-col items-center justify-center p-4"
-    //     : "flex h-3/5 flex-col items-center justify-center overflow-auto p-4"
-    // }
-    >
+    <div>
       {!readOnly && editor && (
         <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
           <div className="mb-2 flex flex-wrap gap-2 rounded bg-slate-50 p-2 shadow-sm">
@@ -204,7 +198,7 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
       <div className="relative overflow-auto">
         {editor?.storage?.characterCount && (
           <div className="relative z-10">
-            <div className="font-poppins z-2 group absolute right-0 top-0 mr-2 mt-2 w-20 rounded-2xl bg-slate-50 p-1 text-center text-xs drop-shadow-sm hover:drop-shadow-none">
+            <div className="font-poppins z-2 group absolute right-0 top-0 mr-2 mt-2 w-20 rounded-2xl p-1 text-center text-xs drop-shadow-sm hover:drop-shadow-none">
               {editor.storage.characterCount.characters()} /{" "}
               {editor.storage.characterCount.words()}
             </div>

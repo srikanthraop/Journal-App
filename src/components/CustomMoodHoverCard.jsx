@@ -19,7 +19,7 @@ const CustomMoodHoverCard = ({ submoods }) => {
         </button>
       </HoverCardTrigger>
       <HoverCardContent>
-        <ul>
+        <ul className="font-poppins">
           {sortedSubmoods.map(([mood, value]) => (
             <li key={mood}>
               <strong>{mood}:</strong> {value}

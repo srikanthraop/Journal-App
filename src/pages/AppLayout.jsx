@@ -11,7 +11,7 @@ const AppLayout = () => {
 
   console.log(navigation.state);
   return (
-    <div className="h-dvh">
+    <div className="">
       <Header />
       {isNavigationLoading ? (
         <LoadingScreen />
