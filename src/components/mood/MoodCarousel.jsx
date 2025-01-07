@@ -28,7 +28,7 @@ const MoodCarousel = ({
           align: "start",
           loop: true,
         }}
-        className="w-full max-w-md"
+        className="font-poppins w-full max-w-md"
       >
         <CarouselContent className="ml-20">
           {submoods.map((mood, index) => (

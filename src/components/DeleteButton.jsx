@@ -10,7 +10,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "./ui/button";
-
+import { MdDeleteOutline } from "react-icons/md";
 const DeleteButton = ({
   title = "Delete",
   descriptionTitle = "Are you absolutely sure?",
@@ -29,12 +29,12 @@ const DeleteButton = ({
   return (
     <>
       <Button variant="destructive" onClick={() => setIsOpen(true)}>
-        {title}
+        {/* {title}  */} <MdDeleteOutline />
       </Button>
 
       <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
         <AlertDialogContent>
-          <AlertDialogHeader>
+          <AlertDialogHeader className="font-poppins">
             <AlertDialogTitle>{descriptionTitle}</AlertDialogTitle>
             <AlertDialogDescription>{descriptionBody}</AlertDialogDescription>
           </AlertDialogHeader>

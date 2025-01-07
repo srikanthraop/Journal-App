@@ -7,21 +7,13 @@ import DeleteButton from "./DeleteButton";
 import { motion } from "framer-motion";
 import HappyText from "@/text-framer-motion/HappyText";
 import { getColorForMood, getDominantMood } from "@/utils/moodUtils";
+import { GoPencil } from "react-icons/go";
 
 function JournalEntryPreview({ entry }) {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [splitDate, splitTime] = entry.date.split("T");
   const formattedTime = splitTime.replace("Z", "");
-
-  // useEffect(
-  //   function () {
-  //     if (navigation.state !== "idle") {
-  //       console.log("PREVIEW" + navigation.state);
-  //     }
-  //   },
-  //   [navigation],
-  // );
 
   const mood = Array.isArray(entry.mood)
     ? entry.mood.join(", ")
@@ -31,43 +23,37 @@ function JournalEntryPreview({ entry }) {
     dispatch(deleteEntry(entry.id));
   }
 
-  if (entry.attachedMedia) {
-    const { game, movie, song, excerpt } = entry.attachedMedia;
-  }
-
   const dominantMood = getDominantMood(entry.submoodSliders);
   const dominantMoodColor = getColorForMood(dominantMood);
 
   const [isHovered, setIsHovered] = useState(false);
   return (
     <motion.li
-      className="flex flex-col rounded-3xl bg-neutral-50 p-5 font-thin" // Neutral background
+      className="flex flex-col rounded-3xl bg-neutral-50 p-5 font-thin"
       whileHover={{
-        scale: [null, 1.05, 1.03], // Subtle scale-up
+        scale: [null, 1.05, 1.03],
         boxShadow: `0px 10px 20px ${dominantMoodColor.boxShadow}`,
-        backgroundColor: `${dominantMoodColor.backgroundColor}`, // Slightly deeper yellow on hover
+        backgroundColor: `${dominantMoodColor.backgroundColor}`,
       }}
       transition={{ duration: 0.4 }}
-      onHoverStart={() => setIsHovered(true)} // Trigger hover state
-      onHoverEnd={() => setIsHovered(false)} // Reset hover state
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
     >
       <div className="grid grid-rows-2">
-        {/* Animated Excerpt */}
         <HappyText
           text={entry.attachedMedia?.excerpt || "I forgot to add an excerpt"}
-          isHovered={isHovered} // Pass hover state to HappyText
+          isHovered={isHovered}
           dominantMoodColor={dominantMoodColor}
         />
 
-        {/* Title, Date, and Buttons */}
         <div>
-          <h1 className="font-spectral text-3xl font-bold">{entry.title}</h1>
-          <p className="text-xs font-extralight">{splitDate}</p>
+          <h1 className="font-poppins text-3xl font-bold">{entry.title}</h1>
+          <p className="font-poppins text-xs font-extralight">{splitDate}</p>
 
           <div className="mt-4 flex flex-row gap-x-2">
             <motion.div
-              initial={{ opacity: 0.1 }} // Start hidden
-              whileHover={{ opacity: 1 }} // Fade in on hover
+              initial={{ opacity: 0.1 }}
+              whileHover={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
             >
               <Link to={`/entry/${entry.id}`}>
@@ -94,7 +80,9 @@ function JournalEntryPreview({ entry }) {
               transition={{ duration: 0.2 }}
             >
               <Link to={`/entry/${entry.id}/edit`}>
-                <Button variant="secondary">Edit</Button>
+                <Button variant="secondary">
+                  <GoPencil />
+                </Button>
               </Link>
             </motion.div>
           </div>

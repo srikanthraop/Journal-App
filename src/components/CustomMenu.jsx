@@ -11,7 +11,7 @@ import { IoAdd } from "react-icons/io5";
 
 const CustomMenu = ({ onSelect }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="font-poppins flex items-center justify-center">
       <DropdownMenu>
         <DropdownMenuTrigger className="flex items-center gap-2 rounded-md bg-slate-50 px-4 py-2 text-white transition duration-150 ease-in-out hover:bg-gray-300">
           <IoAdd className="h-5 w-5 text-slate-900" />

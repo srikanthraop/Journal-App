@@ -461,42 +461,6 @@
         "song": null,
         "excerpt": "LOREM IPSUM TEST TEXT LONG"
       }
-    },
-    {
-      "id": "93b2dbdd-9e58-40bc-b312-a06aecf9e21d",
-      "date": "2025-01-07T04:35:22.706Z",
-      "createdAt": "2025-01-07T04:35:22.706Z",
-      "updatedAt": "2025-01-07T04:35:22.706Z",
-      "tags": [],
-      "attachments": [],
-      "mood": [
-        "happy"
-      ],
-      "title": "Sajini",
-      "tipTapBody": {
-        "type": "doc",
-        "content": [
-          {
-            "type": "paragraph",
-            "content": [
-              {
-                "type": "text",
-                "text": "Song linke"
-              }
-            ]
-          }
-        ]
-      },
-      "favorite": false,
-      "submoodSliders": {
-        "Playful": 4
-      },
-      "attachedMedia": {
-        "game": null,
-        "movie": null,
-        "song": "https://music.apple.com/in/album/sajni-from-laapataa-ladies-single/1730464041",
-        "excerpt": null
-      }
     }
   ]
 }

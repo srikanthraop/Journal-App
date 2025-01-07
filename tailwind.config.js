@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require("tailwindcss/defaultTheme");
 export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -11,7 +12,13 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        spectral: ["Spectral", "serif"], // Add Spectral as a custom font family
+        lexend: ['"Lexend Deca"', ...fontFamily.sans],
+        montserrat: ["Montserrat", ...fontFamily.sans],
+        poppins: ["Poppins", ...fontFamily.sans],
+        quicksand: ["Quicksand", ...fontFamily.sans],
+        robotoMono: ['"Roboto Mono"', ...fontFamily.mono],
+        spectral: ["Spectral", ...fontFamily.serif],
+        playwrite: ['"Playwrite GB S"', ...fontFamily.serif],
       },
       colors: {},
     },

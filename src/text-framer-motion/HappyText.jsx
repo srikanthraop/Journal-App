@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const HappyText = ({ text, isHovered, dominantMoodColor }) => {
   return (
     <motion.div
-      className={`overflow-hidden font-spectral text-4xl ${
+      className={`font-quicksand overflow-hidden text-5xl ${
         isHovered ? "font-bold" : "font-thin"
       }`}
       style={{

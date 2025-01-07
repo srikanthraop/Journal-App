@@ -24,7 +24,7 @@ const JournalEntryDetailed = () => {
       <div className="relative grid grid-cols-1 gap-y-8">
         <div>
           <motion.h1
-            className="font-spectral text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+            className="font-poppins text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
             initial={{ transform: "translateX(-100px)" }}
             animate={{ transform: "translateX(0px)" }}
             transition={{ type: "spring" }}
@@ -35,7 +35,6 @@ const JournalEntryDetailed = () => {
 
         <motion.div
           animate={{
-            x: 0,
             opacity: 1,
             transition: {
               default: { type: "spring" },

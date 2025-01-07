@@ -32,7 +32,7 @@ const CustomMenuDialog = ({
   return (
     <Dialog open={!!selectedItem} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
+        <DialogHeader className="font-poppins">
           <DialogTitle>{`Add ${selectedItem}`}</DialogTitle>
           <DialogDescription>
             {selectedItem === "Game" &&
@@ -46,9 +46,10 @@ const CustomMenuDialog = ({
         <div className="grid gap-4 py-4">
           <Label
             htmlFor="mediaLink"
-            className="text-left"
+            className="font-poppins text-left"
           >{`${selectedItem} Link`}</Label>
           <Input
+            className="font-poppins"
             id="mediaLink"
             placeholder={`Enter ${selectedItem.toLowerCase()} URL`}
             value={inputValue}

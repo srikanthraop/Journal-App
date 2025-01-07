@@ -66,7 +66,7 @@ const MoodDrawer = ({
         <Button variant={`${moodArchetype}`}>{moodArchetype}</Button>
       </DrawerTrigger>
       <DrawerContent
-        className={`h-[60%] rounded-t-lg p-4 transition-colors ${moodStyles[moodArchetype]}`}
+        className={`font-poppins h-[60%] rounded-t-lg p-4 transition-colors ${moodStyles[moodArchetype]}`}
       >
         <DrawerHeader className="flex flex-col items-center text-center">
           <DrawerTitle>Select a sub-mood</DrawerTitle>

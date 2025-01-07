@@ -31,7 +31,11 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
       attributes: {
         class:
           "prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-0 focus:outline-none h-full ",
-        style: `font-size: 16px; ${readOnly ? "height: auto;" : "height: 450px;"}`,
+        style: `
+        font-family: Poppins, sans; 
+        font-size: 16px; 
+        ${readOnly ? "height: auto;" : "height: 450px;"}
+      `,
       },
     },
     onCreate({ editor }) {
@@ -200,7 +204,7 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
       <div className="relative overflow-auto">
         {editor?.storage?.characterCount && (
           <div className="relative z-10">
-            <div className="z-2 group absolute right-0 top-0 mr-2 mt-2 w-20 rounded-2xl bg-slate-100 p-1 text-center text-xs drop-shadow-sm hover:drop-shadow-none">
+            <div className="font-poppins z-2 group absolute right-0 top-0 mr-2 mt-2 w-20 rounded-2xl bg-slate-50 p-1 text-center text-xs drop-shadow-sm hover:drop-shadow-none">
               {editor.storage.characterCount.characters()} /{" "}
               {editor.storage.characterCount.words()}
             </div>
