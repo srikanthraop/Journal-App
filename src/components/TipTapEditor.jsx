@@ -6,7 +6,6 @@ import Link from "@tiptap/extension-link";
 import Heading from "@tiptap/extension-heading";
 import CharacterCount from "@tiptap/extension-character-count";
 
-// 1) import your icons if you haven't already
 import { FaBold, FaItalic, FaStrikethrough } from "react-icons/fa";
 import { GiBulletBill } from "react-icons/gi";
 import { GoListOrdered, GoHorizontalRule } from "react-icons/go";
@@ -31,8 +30,8 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
     editorProps: {
       attributes: {
         class:
-          "prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none h-full ",
-        style: `font-size: 16px; ${readOnly ? "height: auto;" : "height: 300px;"}`,
+          "prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-0 focus:outline-none h-full ",
+        style: `font-size: 16px; ${readOnly ? "height: auto;" : "height: 450px;"}`,
       },
     },
     onCreate({ editor }) {
@@ -58,16 +57,12 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
 
   return (
     <div
-      className={
-        readOnly
-          ? "flex h-3/5 flex-col items-center justify-center p-4"
-          : "flex h-3/5 flex-col items-center justify-center overflow-auto p-4"
-      }
+    // className={
+    //   readOnly
+    //     ? "flex h-3/5 flex-col items-center justify-center p-4"
+    //     : "flex h-3/5 flex-col items-center justify-center overflow-auto p-4"
+    // }
     >
-      {/* 
-        2) The BubbleMenu will appear wherever you select text in the editor.
-           Only rendered when not read-only.
-      */}
       {!readOnly && editor && (
         <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
           <div className="mb-2 flex flex-wrap gap-2 rounded bg-slate-50 p-2 shadow-sm">
@@ -202,14 +197,7 @@ function TipTapEditor({ content, onSave, readOnly = false }) {
         </BubbleMenu>
       )}
 
-      {/* The EditorContent below */}
-      <div
-        className={
-          readOnly
-            ? "relative h-2/5 w-4/5 overflow-auto"
-            : "relative h-2/5 w-4/5 overflow-auto rounded-md bg-white drop-shadow-sm"
-        }
-      >
+      <div className="relative overflow-auto">
         {editor?.storage?.characterCount && (
           <div className="relative z-10">
             <div className="z-2 group absolute right-0 top-0 mr-2 mt-2 w-20 rounded-2xl bg-slate-100 p-1 text-center text-xs drop-shadow-sm hover:drop-shadow-none">

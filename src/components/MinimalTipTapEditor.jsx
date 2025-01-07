@@ -90,7 +90,7 @@ function MinimalTipTapEditor({
         color: "#000",
         minHeight: "1.5em",
         fontSize: "1rem",
-        marginLeft: "10%",
+        marginLeft: "-5px",
       }}
     />
   );

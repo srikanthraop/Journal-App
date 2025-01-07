@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { getEntryById } from "../services/journalEntryAPI";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Form, useLoaderData, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import TextInput from "../components/journal-entry-components/TextInput";
 import TipTapEditor from "../components/TipTapEditor";
 import FormButton from "../components/journal-entry-components/FormButton";
 import { addEntries, editEntry } from "../features/entrySlice";
+import MinimalTipTapEditor from "@/components/MinimalTipTapEditor";
+import { Button } from "@/components/ui/button";
 
 function EditJournalEntry() {
   const entry = useLoaderData();
@@ -44,22 +45,23 @@ function EditJournalEntry() {
   }
 
   return (
-    <div>
-      <h1>Edit Journal Entry</h1>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          id="title"
-          label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
+    <div className="mx-auto my-10 max-w-screen-lg sm:px-10 md:px-16 lg:px-20 xl:px-24">
+      <Form
+        onSubmit={handleSubmit}
+        className="relative grid grid-cols-1 gap-y-8"
+      >
+        <div>
+          <MinimalTipTapEditor content={title} onSave={setTitle} />
+        </div>
 
-        <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
+        <div>
+          <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
+        </div>
 
-        <br />
-        <FormButton type="submit">Save Entry</FormButton>
-      </form>
+        <div className="flex justify-end">
+          <Button type="submit">Save Entry</Button>
+        </div>
+      </Form>
     </div>
   );
 }

@@ -55,7 +55,7 @@ const MoodDrawer = ({
     Angry: "text-red-700 dark:text-red-300",
     Afraid: "text-purple-700 dark:text-purple-300",
     Surprised: "text-pink-700 dark:text-pink-300",
-    Disgusted: "text-amber-700 dark:text-amber-300",
+    Disgusted: "text-green-700 dark:text-green-300",
     Calm: "text-gray-700 dark:text-gray-300",
     Excited: "text-orange-700 dark:text-orange-300",
   };

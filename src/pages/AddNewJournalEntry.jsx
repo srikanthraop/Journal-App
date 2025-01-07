@@ -67,25 +67,30 @@ function AddNewJournalEntry() {
         alert(`Failed to add entry: ${error}`);
       });
   };
-
   return (
-    <div className="mx-8 my-0">
+    <div className="flex flex-col items-center justify-center py-8">
       <Form
-        className="flex flex-col justify-center gap-y-8"
+        className="flex w-full max-w-4xl flex-col items-center justify-center gap-y-8"
         onSubmit={handleSubmit}
       >
-        <MinimalTipTapEditor content={title} onSave={setTitle} />
-        <div className="flex-grow">
+        <div className="flex w-full flex-col gap-y-6 px-4">
+          <MinimalTipTapEditor content={title} onSave={setTitle} />
           <TipTapEditor content={tipTapBody} onSave={setTipTapBody} />
         </div>
 
         <MoodCards
-          className="mt-10 flex w-full flex-row justify-center gap-x-3"
+          className="flex w-full flex-wrap justify-center gap-x-4 px-4"
           sliderValues={submoodSliders}
           onChangeSliderValues={setSubmoodSliders}
         />
 
-        <CustomMenu onSelect={setSelectedItem} />
+        <div className="mt-4 flex w-full items-center justify-between px-4">
+          <CustomMenu onSelect={setSelectedItem} />
+
+          <Button type="submit" variant="default">
+            Save Entry
+          </Button>
+        </div>
 
         {selectedItem && (
           <CustomMenuDialog
@@ -95,10 +100,6 @@ function AddNewJournalEntry() {
             onAttach={setAttachedMedia}
           />
         )}
-
-        <Button type="submit" variant="default">
-          Save Entry
-        </Button>
       </Form>
     </div>
   );

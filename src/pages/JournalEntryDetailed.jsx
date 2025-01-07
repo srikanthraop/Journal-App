@@ -7,6 +7,8 @@ import { addEntries, deleteEntry } from "../features/entrySlice";
 import TiptapEditor from "../components/TipTapEditor";
 import DeleteButton from "@/components/DeleteButton";
 import store from "@/store";
+import CustomMediaHoverCard from "@/components/CustomMediaHoverCard";
+import CustomMoodHoverCard from "@/components/CustomMoodHoverCard";
 
 const JournalEntryDetailed = () => {
   const entry = useLoaderData();
@@ -17,29 +19,39 @@ const JournalEntryDetailed = () => {
     await dispatch(deleteEntry(entry.id));
     navigate("/dashboard");
   }
-
   return (
-    <div className="mx-auto my-10 max-w-screen-2xl px-8 sm:px-16 md:px-24 lg:px-32 xl:px-48">
-      <div className="relative grid grid-cols-1">
+    <div className="mx-auto my-10 max-w-screen-lg sm:px-10 md:px-16 lg:px-20 xl:px-24">
+      <div className="relative grid grid-cols-1 gap-y-8">
         <div>
           <motion.h1
-            className="ml-[135px] font-spectral text-6xl"
+            className="font-spectral text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
             initial={{ transform: "translateX(-100px)" }}
             animate={{ transform: "translateX(0px)" }}
             transition={{ type: "spring" }}
           >
             {entry.title}
           </motion.h1>
-          {/* <p>
-          <strong>Date:</strong> {entry.date}
-        </p> */}
-
-          <div>
-            <TiptapEditor content={entry.tipTapBody} readOnly={true} />
-          </div>
         </div>
 
-        <div className="sticky w-24">
+        <motion.div
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: {
+              default: { type: "spring" },
+              opacity: { ease: "linear" },
+            },
+          }}
+        >
+          <TiptapEditor content={entry.tipTapBody} readOnly={true} />
+        </motion.div>
+
+        <div className="flex flex-wrap items-center justify-between gap-y-4">
+          <div className="flex space-x-4">
+            <CustomMediaHoverCard attachedMedia={entry.attachedMedia} />
+            <CustomMoodHoverCard submoods={entry.submoodSliders} />
+          </div>
+
           <DeleteButton
             title="Delete"
             descriptionTitle="Confirm Deletion"
